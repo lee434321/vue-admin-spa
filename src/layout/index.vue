@@ -53,6 +53,7 @@ export default {
     display: flex;
 
     aside {
+        box-sizing: border-box;
         width: var(--sidebar-width);
         height: 100vh;
         z-index: 5;
@@ -67,13 +68,23 @@ export default {
         }
 
         nav {
-            ul{
-                position: relative;                
+            ul {
+                position: relative;
+                padding: 10px 10px;
             }
+
             li {
                 list-style: none;
                 position: relative;
-                background-color: coral;           
+
+                //background-color: coral;        
+                a {
+                    display: flex;
+                    padding: .375rem .5rem;
+                    line-height: 1.375;
+                    text-decoration: none;
+                    color: #606770;
+                }
             }
         }
     }
