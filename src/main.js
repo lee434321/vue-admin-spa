@@ -2,6 +2,9 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 
+// 引入谷歌字体文件
+import "@/assets/css/fonts.css";
+
 const app = createApp(App)
 app.use(router);
 app.mount('#app')
