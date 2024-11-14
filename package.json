@@ -35,8 +35,8 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {
-      "eslint-plugin-vue/multi-word-component-names": "off"
+    "rules": {      
+      "vue/multi-word-component-names":"off"
     }
   },
   "browserslist": [
