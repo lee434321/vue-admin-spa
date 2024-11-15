@@ -27,7 +27,7 @@ body {
 }
 
 :root {
-  --sidebar-width: 200px;
+  --sidebar-width: 300px;
   --sidebar-collapsed-width: 64px;
 }
 </style>
