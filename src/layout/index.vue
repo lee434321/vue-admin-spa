@@ -31,7 +31,8 @@
                     <RouterLink to="/prod">Product</RouterLink>
                 </li>
             </ul>
-            <menus :items="menu_tree"></menus>
+            
+            <menus :items="menu_tree_property_one"></menus>
         </nav>
     </aside>
     <main class="content-wrapper">
@@ -131,7 +132,7 @@ export default {
                         children: []
                     }, {
                         id: 9,
-                        name: 'ws-32',
+                        name: 'ws-212',
                         children: []
                     }]
                 }]
@@ -143,11 +144,167 @@ export default {
                     name: 'ws-31',
                     children: []
                 }]
-            }]
+            }],
+            menu_tree_property_one:[ //{id:2,name:'',children:[]}
+                {id:'PMSHOM',name:'Home',children:[]},
+                {id:'PMSENQ',name:'Enquiry',children:[
+                    {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[]},
+                    {id:'PMSENQ_ABE',name:'Account Balance Enquiry',children:[]},
+                    {id:'PMSENQ_LSE',name:'Lease Enquiry',children:[]},
+                    {id:'PMSENQ_EXS',name:'Executive Summary',children:[]}
+                ]},
+                {id:'PMSCTM',name:'Customer Mgr',children:[
+                    {id:'PMSCTM_SEL',name:'Customer',children:[]},
+                    {id:'PMSCTM_APV',name:'Customer Approval',children:[]},
+                    {id:'PMSCTM_CPS',name:'Contact Point Search',children:[]}
+                ]},
+                {id:'PMSPPT',name:'Property Mgr',children:[
+                    {id:'PMSPPT_PPD',name:'Property Definition',children:[]},
+                    {id:'PMSPPT_SPM',name:'Space Management',children:[]},
+                    {id:'PMSPPT_LSM',name:'Lease Management',children:[]},
+                    {id:'PMSPPT_TOR',name:'Turnover Rent',children:[]},
+                    {id:'PMSPPT_GMR',name:'Government Rents',children:[]},
+                    {id:'PMSPPT_BLS',name:'Billing Schedule',children:[]},
+                    {id:'PMSPPT_RFA',name:'RFA',children:[]},                    
+                ]},
+                {id:'MM_PMSACR',name:'Account Receivable',children:[
+                    {id:'PMSACR_INV',name:'Invoice',children:[
+                        {id:'PMSACR_INV_SCH',name:'Invoice Search',children:[]},
+                        {id:'PMSACR_INV_TMP',name:'Invoice Template',children:[]},
+                        {id:'PMSACR_INV_TSH',name:'Invoice Template Search',children:[]},
+                        {id:'PMSACR_INV_GEN',name:'Invoice Generation',children:[]},
+                        {id:'PMSACR_INV_APR',name:'Invoice Approval',children:[]},
+                        {id:'PMSACR_INV_COD',name:'AR Cut Off Date',children:[]},
+                        {id:'PMSACR_INV_VAT',name:'Submit VAT Invoice',children:[]},
+                        {id:'PMSACR_VAT_QRY',name:'Query VAT Status',children:[]},
+                        {id:'PMSACR_VAT_VEW',name:'VAT Viewer',children:[]}                        
+                    ]},
+                    {id:'PMSACR_REC',name:'Receipt',children:[
+                        {id:'PMSACR_REC_SCH',name:'Search',children:[]},
+                        {id:'PMSACR_REC_ADD',name:'Add',children:[]},
+                        {id:'PMSACR_REC_APR',name:'Approval',children:[]}                     
+                    ]},
+                    {id:'PMSACR_INT',name:'Interest',children:[
+                        {id:'PMSACR_INT_PMS',name:'Parameter Setup',children:[]},
+                        {id:'PMSACR_INT_ITS',name:'Interest Type Setup',children:[]},
+                        {id:'PMSACR_INT_PRS',name:'Prime Rate Setup',children:[]},
+                        {id:'PMSACR_INT_ITW',name:'Interest Waiving',children:[]},
+                        {id:'PMSACR_INT_ICS',name:'Interest Calculation Submission',children:[]}
+                    ]},
+                    {id:'PMSACR_COL',name:'Collection',children:[                        
+                        {id:'PMSACR_COL_ACB',name:'Account Balance',children:[]},    
+                        {id:'PMSACR_COL_LGC',name:'Legal Case',children:[]},    
+                        {id:'PMSACR_COL_TPR',name:'Telephone Reminder',children:[]},    
+                        {id:'PMSACR_COL_CRC',name:'Credit Control',children:[]},    
+                        {id:'PMSACR_COL_AGD',name:'Aging Definition',children:[]}                      
+                    ]},
+                    {id:'PMSACR_DEP',name:'Deposit',children:[
+                        {id:'PMSACR_DEP_TMA',name:'Termination Approval',children:[]},
+                        {id:'PMSACR_DEP_CTB',name:'Customer Balance',children:[]}                        
+                    ]},
+                    {id:'PMSACR_ITF',name:'Interface',children:[
+                        {id:'PMSACR_ITF_DRD',name:'Debtor Reference Definition',children:[]},
+                        {id:'PMSACR_ITF_AWP',name:'Autopay Withdrawal Priority',children:[]},
+                        {id:'PMSACR_ITF_APG',name:'Autopay Withdrawal Priority - Global',children:[]},
+                        {id:'PMSACR_ITF_GAF',name:'Generation Autopay File Job Submission',children:[]},
+                        {id:'PMSACR_ITF_AFA',name:'Autopay File Amendment',children:[]},
+                        {id:'PMSACR_ITF_RCI',name:'Receipt Import',children:[]},
+                        {id:'PMSACR_ITF_RCC',name:'Receipt Confirmation',children:[]},
+                        {id:'PMSACR_ITF_AGI',name:'AR-GL Interface',children:[]},
+                    ]},
+                    {id:'PMSACR_RTP',name:'Rental Projection',children:[
+                        {id:'PMSACR_RTP_PRS',name:'Period Setup',children:[]},
+                        {id:'PMSACR_RTP_PJS',name:'Projection Setup',children:[]},
+                        {id:'PMSACR_RTP_PPS',name:'Property Setup',children:[]},
+                        {id:'PMSACR_RTP_UNS',name:'Unit Setup',children:[]},
+                        {id:'PMSACR_RTP_LES',name:'Lease Setup',children:[]},
+                        {id:'PMSACR_RTP_USP',name:'Unit Split',children:[]},
+                        {id:'PMSACR_RTP_UCO',name:'Unit Combine',children:[]},
+                        {id:'PMSACR_RTP_SFI',name:'Building Service Fee File Import',children:[]},
+                        {id:'PMSACR_RTP_JBS',name:'Job Submission',children:[]},
+                        {id:'PMSACR_RTP_DPR',name:'Details Projection Report',children:[]},
+                        {id:'PMSACR_RTP_RCR',name:'Rental Collection Commission Report',children:[]},
+                        {id:'PMSACR_RTP_LCR',name:'Letting Commission Report',children:[]},
+                        {id:'PMSACR_RTP_SPR',name:'Summary Projection Report',children:[]},
+                        {id:'PMSACR_RTP_PPR',name:'Projection Parameters Report',children:[]},
+                        {id:'PMSACR_RTP_VPR',name:'Vacant Unit Expenses Projection Report',children:[]},
+                        {id:'PMSACR_RTP_BSR',name:'Budget Summary Report',children:[]},
+                        {id:'PMSACR_RTP_BDR',name:'Budget Detail Report',children:[]},
+                        {id:'PMSACR_RTP_ECR',name:'RP Extend Compenation Report',children:[]},
+                        {id:'PMSACR_RTP_ELR',name:'RP Extend License Report',children:[]},
+                        {id:'PMSACR_RTP_EDR',name:'RP Extend Duplicate Unit Report',children:[]},
+                    ]},
+                    {id:'PMSACR_ESM',name:'Estate Management',children:[
+                        {id:'PMSACR_ESM_MTM',name:'Meter Maintenance',children:[]},
+                        {id:'PMSACR_ESM_CTM',name:'Customer Meter',children:[]},
+                        {id:'PMSACR_ESM_PCM',name:'Billing Summary',children:[]},
+                        {id:'PMSACR_ESM_BLG',name:'Billing Generation',children:[]},
+                        {id:'PMSACR_ESM_IMT',name:'EM Import',children:[]},
+                        {id:'PMSACR_ESM_EMR',name:'EM Report',children:[]},
+                        {id:'PMSACR_ESM_EDR',name:'EM Detail Report',children:[]},
+                        {id:'PMSACR_ESM_BAM',name:'Billing Approval',children:[]},
+                        {id:'PMSACR_ESM_IMC',name:'EM Import Confirm',children:[]},
+                        {id:'PMSACR_ESM_EMS',name:'EM Summary Report',children:[]},
+                        {id:'PMSACR_ESM_MTT',name:'Meter Templete Report',children:[]}
+                    ]}
+                ]},
+                {id:'PMSRPT',name:'Reports',children:[
+                    {id:'PMSRPT_ARB',name:'AR Billing',children:[]},
+                    {id:'PMSRPT_ODI',name:'Overdue Interest',children:[]},
+                    {id:'PMSRPT_REC',name:'Receipt',children:[]},
+                    {id:'PMSRPT_CRC',name:'Credit Control',children:[]},
+                    {id:'PMSRPT_DTI',name:'Data Interface',children:[]},
+                    {id:'PMSRPT_MTN',name:'Maintenance',children:[]},
+                    {id:'PMSRPT_TNC',name:'Tenancy',children:[]},
+                    {id:'PMSRPT_RFA',name:'Rent Free Amortisation',children:[]},
+                    {id:'PMSRPT_TOR',name:'Turnover Rent',children:[]},
+                    {id:'PMSRPT_PNB',name:'PN Billing',children:[]},
+                    {id:'PMSRPT_CTM',name:'Customer',children:[]},
+                    {id:'PMSRPT_RTE',name:'Rates',children:[]},
+                    {id:'PMSRPT_UNM',name:'Unit Maintenance',children:[]},
+                    {id:'PMSRPT_PND',name:'PN Deposit',children:[]},
+                    {id:'PMSRPT_PNR',name:'PN Report',children:[]}                
+                ]},
+                {id:'PMSADM',name:'Administration',children:[
+                    {id:'PMSADM_USR',name:'User Maintenance',children:[]},
+                    {id:'PMSADM_RLE',name:'Role Maintenance',children:[]},
+                    {id:'PMSADM_RER',name:'Regular Request',children:[]},
+                    {id:'PMSADM_NAC',name:'Natural Account Maintenance',children:[]},
+                    {id:'PMSADM_CCC',name:'Cost Center Code Maintenance',children:[]},
+                    {id:'PMSADM_ICC',name:'Inter Company Code Maintenance',children:[]},
+                    {id:'PMSADM_CTC',name:'Country Code Maintenance',children:[]},
+                    {id:'PMSADM_PDC',name:'Product Code Maintenance',children:[]},
+                    {id:'PMSADM_CMM',name:'COA Mapping Maintenance',children:[]},
+                    {id:'PMSADM_BNK',name:'Bank Maintenance',children:[]},
+                    {id:'PMSADM_BRN',name:'Branch Maintenance',children:[]},
+                    {id:'PMSADM_COM',name:'Company Maintenance',children:[]},
+                    {id:'PMSADM_CCM',name:'Charge Code Maintenance',children:[]},
+                    {id:'PMSADM_PMM',name:'Payment Method Maintenance',children:[]},
+                    {id:'PMSADM_SIC',name:'SIC Maintenance',children:[]},
+                    {id:'PMSADM_FNC',name:'Function Maintenance',children:[]},
+                    {id:'PMSADM_TTM',name:'Term Type Maintenance',children:[]},
+                    {id:'PMSADM_AGM',name:'Agency Maintenance',children:[]},
+                    {id:'PMSADM_PTM',name:'Payment Term Maintenance',children:[]},
+                    {id:'PMSADM_STS',name:'Status Maintenance',children:[]},
+                    {id:'PMSADM_TNR',name:'Tenure Maintenance',children:[]},
+                    {id:'PMSADM_USG',name:'Usage Maintenance',children:[]},
+                    {id:'PMSADM_COC',name:'Company Class Maintenance',children:[]},
+                    {id:'PMSADM_CRM',name:'Company Role Maintenance',children:[]},
+                    {id:'PMSADM_RWA',name:'Reason of Waiving Audited GT',children:[]},
+                    {id:'PMSADM_UOM',name:'UOM Maintenance',children:[]},
+                    {id:'PMSADM_CNT',name:'Country Maintenance',children:[]},
+                    {id:'PMSADM_CTY',name:'City Maintenance',children:[]},
+                    {id:'PMSADM_PVC',name:'Province Maintenance',children:[]},
+                    {id:'PMSADM_LCD',name:'Last Calculation Date Maintenance',children:[]},
+                    {id:'PMSADM_RTP',name:'Report Test Page',children:[]},
+                    {id:'PMSADM_VAT',name:'VAT Parameters Maintenance',children:[]},
+                ]}
+            ]
         }
     },
-    methods: {
+    methods: {        
         toggleSiderBar() {
+
             console.log('invoke toogle sidebar');
             this.collapsed = !this.collapsed;
         }
@@ -166,7 +323,8 @@ export default {
         z-index: 5;
         transition: all 0.3s;
         background: #fff;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: scroll;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 
         &.collpased {
