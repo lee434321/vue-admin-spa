@@ -5,10 +5,8 @@
             <h3 class="logo">Vue Admin Spa</h3>
             <ul class="menu">
                 <li class="menu-item">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2zm10-4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2zm0-8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path>
-                        </svg>
+                    <i class="icon">                        
+                        <Icon icon="tabler:layout-dashboard-filled" ></Icon>
                     </i>
                     <span class="menu-item-title">
                         <RouterLink to="/emp">Employee</RouterLink>
@@ -32,10 +30,10 @@
                 </li>
             </ul>
             
-            <menus :items="menu_tree_property_one"></menus>
+            <AsideMenu :items="menu_tree_property_one"></AsideMenu>
         </nav>
     </aside>
-    <main class="content-wrapper">
+    <main class="content-wrapper">        
         <header>
             <svg class="toogle-btn" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="18" height="18" @click="toggleSiderBar">
                 <path d="M85.333 256A42.667 42.667 0 0 1 128 213.333h768a42.667 42.667 0 1 1 0 85.334H128A42.667 42.667 0 0 1 85.333 256zm0 256A42.667 42.667 0 0 1 128 469.333h512a42.667 42.667 0 1 1 0 85.334H128A42.667 42.667 0 0 1 85.333 512zm0 256A42.667 42.667 0 0 1 128 725.333h768a42.667 42.667 0 1 1 0 85.334H128A42.667 42.667 0 0 1 85.333 768z">
@@ -50,11 +48,11 @@
 </template>
 
 <script>
-import menus from '@/components/menus.vue';
+import AsideMenu from '@/components/AsideMenu.vue'
 export default {
     name: "layout",
-    components: {
-        menus
+    components: {        
+        AsideMenu
     },
     data: function () {
         return {
@@ -146,8 +144,8 @@ export default {
                 }]
             }],
             menu_tree_property_one:[ //{id:2,name:'',children:[]}
-                {id:'PMSHOM',name:'Home',children:[]},
-                {id:'PMSENQ',name:'Enquiry',children:[
+                {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',children:[]},
+                {id:'PMSENQ',name:'Enquiry',icon:'tabler:pencil-question',children:[
                     {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[]},
                     {id:'PMSENQ_ABE',name:'Account Balance Enquiry',children:[]},
                     {id:'PMSENQ_LSE',name:'Lease Enquiry',children:[]},
@@ -340,7 +338,7 @@ export default {
             li {
                 list-style: none;
                 position: relative;
-                background-color: coral;           
+                // background-color: coral;           
             }
         }
     }

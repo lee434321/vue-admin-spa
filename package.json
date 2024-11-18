@@ -17,6 +17,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@iconify-json/tabler": "^1.2.8",
+    "@iconify/vue": "^4.1.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
@@ -35,8 +37,8 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {      
-      "vue/multi-word-component-names":"off"
+    "rules": {
+      "vue/multi-word-component-names": "off"
     }
   },
   "browserslist": [

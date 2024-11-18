@@ -1,29 +1,31 @@
 <template>
-<ul class="menu">
-
+<ul class="w-menu">
     <li v-for="item in items" :key="item.id" :class="item.children.length>0?'sub-menu':'menu-item'">
         <div class="sub-menu-holder" v-if="item.children.length>0" @click.stop.prevent="slide($event,item)">
-            <i class='icon'></i>
+            <i class='icon'>
+                <Icon :icon="item.icon"></Icon>
+            </i>
             <span class="sub-menu-title">{{ item.name }}</span>
             <i class='sub-menu-icon-arrow'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path>
-                </svg>
+                
+                <Icon icon="tabler:chevron-down"></Icon>
             </i>
         </div>
         <div v-else>
-            <i class='icon'></i>
+            <i class='icon'>
+                <Icon :icon="item.icon"></Icon>
+            </i>
             <span>{{ item.name }}</span>
-        </div>        
-        <menus v-if="item.children.length > 0" :items="item.children" :style="{height:(item.id==tickd.id?item.children.length*50:0)+'px'}"></menus>
-        
+        </div>
+        <AsideMenu v-if="item.children.length > 0" :items="item.children" :style="{height:(item.id==tickd.id?item.children.length*50:0)+'px'}"></AsideMenu>
+
     </li>
 </ul>
 </template>
 
 <script>
 export default {
-    name: 'menus',
+    name: 'AsideMenu',
     data: () => {
         return {
             info: "test",
@@ -37,12 +39,32 @@ export default {
     methods: {
         slide(sender, item) {
             this.tickd = item;
+        },
+        bindCss() {
+
         }
     }
 }
 </script>
 
 <style scoped>
+.w-menu {
+    width: 100%;
+    border-right: none !important;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+
+    .w-menu-item {}
+
+    .w-sub-menu {
+        .w-menu-item {
+
+        }
+    }
+}
+
 .menu {
     /* background: darkkhaki; */
     width: 100%;
@@ -68,7 +90,7 @@ export default {
     white-space: nowrap;
 
     &:hover {
-        background-color:#bea3d4;
+        background-color: #bea3d4;
     }
 }
 
@@ -88,13 +110,14 @@ export default {
     margin: 0;
     padding-left: 0;
     position: relative;
+    padding: 0 20px;
 
     .sub-menu-title {
         height: 56px;
         line-height: 56px;
         font-size: 14px;
         color: #303133;
-        padding: 0 20px;
+        /* padding: 0 20px; */
         cursor: pointer;
         position: relative;
         -webkit-transition: border-color 0.3s, background-color 0.3s, color 0.3s;

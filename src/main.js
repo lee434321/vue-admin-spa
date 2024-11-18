@@ -5,9 +5,17 @@ import router from './router'
 // 引入谷歌字体文件
 import "@/assets/css/fonts.css";
 
+import TablerIcons from './components/TablerIcons.vue';
+
+//创建应用
 const app = createApp(App)
 app.use(router);
 app.mount('#app')
+
+app.component('TablerIcons',TablerIcons)
+
+import {Icon} from '@iconify/vue';
+app.component('Icon',Icon)
 
 /*
 build steps:
