@@ -1,7 +1,7 @@
 <template>
 <ul class="w-menu">
-    <li v-for="item in items" :key="item.id" :class="item.children.length>0?'sub-menu':'menu-item'">
-        <div class="sub-menu-holder" v-if="item.children.length>0" @click.stop.prevent="slide($event,item)">
+    <li v-for="item in items" :key="item.id" :class="item.children.length>0?'sub-menu w-sub-menu':'menu-item'">
+        <div v-if="item.children.length>0" class="sub-menu-holder" @click.stop.prevent="slide($event,item)">
             <i class='icon'>
                 <Icon :icon="item.icon"></Icon>
             </i>
@@ -18,7 +18,6 @@
             <span>{{ item.name }}</span>
         </div>
         <AsideMenu v-if="item.children.length > 0" :items="item.children" :style="{height:(item.id==tickd.id?item.children.length*50:0)+'px'}"></AsideMenu>
-
     </li>
 </ul>
 </template>
@@ -56,13 +55,23 @@ export default {
     margin: 0;
     padding-left: 0;
 
-    .w-menu-item {}
+    .w-menu-item {
+        height: 56px;
+    }
 
     .w-sub-menu {
+        height: 56px;
+
         .w-menu-item {
 
         }
     }
+}
+
+.w-sub-menu{
+    height: 56px;
+    transition: height 0.37s; 
+    overflow: hidden;
 }
 
 .menu {
