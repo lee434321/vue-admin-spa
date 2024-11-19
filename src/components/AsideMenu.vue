@@ -16,7 +16,7 @@
             </i>
             <span>{{ item.name }}</span>
         </div>
-        <AsideMenu v-if="item.children.length > 0" :items="item.children" :style="{height:(item.id==tickd.id?item.children.length*50:0)+'px'}"></AsideMenu>
+        <AsideMenu v-if="item.children.length > 0" :items="item.children" :style="{height:(item.id==ticked.id?item.children.length*50:0)+'px'}"></AsideMenu>
 
     </li>
 </ul>
