@@ -151,13 +151,19 @@ export default {
                     {id:'PMSENQ_LSE',name:'Lease Enquiry',children:[]},
                     {id:'PMSENQ_EXS',name:'Executive Summary',children:[]}
                 ]},
-                {id:'PMSCTM',name:'Customer Mgr',children:[
+                {id:'PMSCTM',name:'Customer Mgr',icon:'tabler:users',children:[
                     {id:'PMSCTM_SEL',name:'Customer',children:[]},
                     {id:'PMSCTM_APV',name:'Customer Approval',children:[]},
                     {id:'PMSCTM_CPS',name:'Contact Point Search',children:[]}
                 ]},
                 {id:'PMSPPT',name:'Property Mgr',children:[
-                    {id:'PMSPPT_PPD',name:'Property Definition',children:[]},
+                    {id:'PMSPPT_PPD',name:'Property Definition',children:[
+                        {id:'PMSPPT_PPD_REG',name:'Region',children:[]},
+                        {id:'PMSPPT_PPD_DEV',name:'Development',children:[]},
+                        {id:'PMSPPT_PPD_PPT',name:'Property',children:[]},
+                        {id:'PMSPPT_PPD_FLR',name:'Floor',children:[]},
+                        {id:'PMSPPT_PPD_UNT',name:'Unit',children:[]},
+                    ]},
                     {id:'PMSPPT_SPM',name:'Space Management',children:[]},
                     {id:'PMSPPT_LSM',name:'Lease Management',children:[]},
                     {id:'PMSPPT_TOR',name:'Turnover Rent',children:[]},
