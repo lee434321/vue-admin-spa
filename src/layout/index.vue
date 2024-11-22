@@ -3,6 +3,7 @@
     <aside class="sidebar" :class="{ collpased: collapsed }">
         <nav>
             <h3 class="logo">Vue Admin Spa</h3>
+            <!--
             <ul class="menu">
                 <li class="menu-item">
                     <i class="icon">                        
@@ -29,7 +30,8 @@
                     <RouterLink to="/prod">Product</RouterLink>
                 </li>
             </ul>
-            
+            -->
+
             <AsideMenu :items="menu_tree_property_one"></AsideMenu>
         </nav>
     </aside>
@@ -58,91 +60,6 @@ export default {
         return {
             msg: 'test',
             collapsed: false,
-            menu_items: [{
-                    id: 1,
-                    name: 'workshop1',
-                    pid: 0
-                },
-                {
-                    id: 2,
-                    name: 'workshop2',
-                    pid: 0
-                },
-                {
-                    id: 3,
-                    name: 'workshop3',
-                    pid: 0
-                },
-                {
-                    id: 4,
-                    name: 'ws-11',
-                    pid: 1
-                },
-                {
-                    id: 5,
-                    name: 'ws-12',
-                    pid: 1
-                },
-                {
-                    id: 6,
-                    name: 'ws-21',
-                    pid: 2
-                },
-                {
-                    id: 7,
-                    name: 'ws-211',
-                    pid: 6
-                },
-                {
-                    id: 8,
-                    name: 'ws-31',
-                    pid: 3
-                },
-                {
-                    id: 9,
-                    name: 'ws-32',
-                    pid: 3
-                }
-            ],
-            menu_tree: [{
-                id: 1,
-                name: 'workshop1',
-                children: [{
-                        id: 4,
-                        name: 'ws-11',
-                        children: []
-                    },
-                    {
-                        id: 5,
-                        name: 'ws-12',
-                        children: []
-                    }
-                ]
-            }, {
-                id: 2,
-                name: 'workshop2',
-                children: [{
-                    id: 6,
-                    name: 'ws-21',
-                    children: [{
-                        id: 7,
-                        name: 'ws-211',
-                        children: []
-                    }, {
-                        id: 9,
-                        name: 'ws-212',
-                        children: []
-                    }]
-                }]
-            }, {
-                id: 3,
-                name: 'workshop3',
-                children: [{
-                    id: 8,
-                    name: 'ws-31',
-                    children: []
-                }]
-            }],
             menu_tree_property_one:[ //{id:2,name:'',children:[]}
                 {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',children:[]},
                 {id:'PMSENQ',name:'Enquiry',icon:'tabler:pencil-question',children:[
@@ -151,12 +68,12 @@ export default {
                     {id:'PMSENQ_LSE',name:'Lease Enquiry',children:[]},
                     {id:'PMSENQ_EXS',name:'Executive Summary',children:[]}
                 ]},
-                {id:'PMSCTM',name:'Customer Mgr',icon:'tabler:users',children:[
+                {id:'PMSCTM',name:'Customer Management',icon:'tabler:users',children:[
                     {id:'PMSCTM_SEL',name:'Customer',children:[]},
                     {id:'PMSCTM_APV',name:'Customer Approval',children:[]},
                     {id:'PMSCTM_CPS',name:'Contact Point Search',children:[]}
                 ]},
-                {id:'PMSPPT',name:'Property Mgr',children:[
+                {id:'PMSPPT',name:'Property Management',icon:'tabler:building-skyscraper',children:[
                     {id:'PMSPPT_PPD',name:'Property Definition',children:[
                         {id:'PMSPPT_PPD_REG',name:'Region',children:[]},
                         {id:'PMSPPT_PPD_DEV',name:'Development',children:[]},
@@ -166,12 +83,40 @@ export default {
                     ]},
                     {id:'PMSPPT_SPM',name:'Space Management',children:[]},
                     {id:'PMSPPT_LSM',name:'Lease Management',children:[]},
-                    {id:'PMSPPT_TOR',name:'Turnover Rent',children:[]},
-                    {id:'PMSPPT_GMR',name:'Government Rents',children:[]},
-                    {id:'PMSPPT_BLS',name:'Billing Schedule',children:[]},
-                    {id:'PMSPPT_RFA',name:'RFA',children:[]},                    
+                    {id:'PMSPPT_TOR',name:'Turnover Rent',children:[
+                        {id:'PMSPPT_TOR_TFD',name:'TR Formula Definition',children:[]},
+                        {id:'PMSPPT_TOR_MMR',name:'MGT Rental',children:[]},
+                        {id:'PMSPPT_LSM_SYP',name:'Manually Synchronize POS Data',children:[
+                            {id:'PMSPPT_LSM_SYP_ORGD',name:'Upload Organization Data',children:[]},
+                            {id:'PMSPPT_LSM_SYP_CUSD',name:'Upload Tenants File Data',children:[]},
+                            {id:'PMSPPT_LSM_SYP_SLED',name:'Upload Shop Lease Data',children:[]},
+                            {id:'PMSPPT_LSM_SYP_SYDD',name:'Synchronized Daily Sales Data',children:[]}
+                        ]},
+                        {id:'PMSPPT_TOR_MMA',name:'MGT Approval',children:[]},
+                        {id:'PMSPPT_TOR_AAJ',name:'AGT Adjustment',children:[]},
+                        {id:'PMSPPT_TOR_AAP',name:'AGT Approval',children:[]},
+                        {id:'PMSPPT_TOR_GEQ',name:'GT Enquiry',children:[]},
+                        {id:'PMSPPT_TOR_DTI',name:'Daily Turnover Import',children:[]},
+                        {id:'PMSPPT_TOR_DMS',name:'Daily Turnover Submit',children:[]},
+                        {id:'PMSPPT_TOR_CNG',name:'Credit Note Generation',children:[]},
+                    ]},
+                    {id:'PMSPPT_GMR',name:'Government Rents',children:[
+                        {id:'PMSPPT_GMR_GRR',name:'Govt Rents',children:[]}
+                    ]},
+                    {id:'PMSPPT_BLS',name:'Billing Schedule',children:[
+                        {id:'PMSPPT_BLS_BSS',name:'Billing Schedule Search',children:[]},
+                        {id:'PMSPPT_BLS_BSR',name:'Billing Suspen/Recom',children:[]},
+                        {id:'PMSPPT_BLS_BSA',name:'Billing Schedule Approval',children:[]},
+                        {id:'PMSPPT_BLS_BCD',name:'Billing Cutoff Day',children:[]},
+                        {id:'PMSPPT_BLS_MBR',name:'Month End Billing Run Submission',children:[]}
+                    ]},
+                    {id:'PMSPPT_RFA',name:'RFA',children:[
+                        {id:'PMSPPT_RFA_LCC',name:'Lease Combination For RFA Computation',children:[]},
+                        {id:'PMSPPT_RFA_TRR',name:'Trial RFA Report',children:[]},
+                        {id:'PMSPPT_RFA_RIQ',name:'RFA Inquiry',children:[]},
+                    ]},                    
                 ]},
-                {id:'MM_PMSACR',name:'Account Receivable',children:[
+                {id:'MM_PMSACR',name:'Account Receivable',icon:'tabler:coins',children:[
                     {id:'PMSACR_INV',name:'Invoice',children:[
                         {id:'PMSACR_INV_SCH',name:'Invoice Search',children:[]},
                         {id:'PMSACR_INV_TMP',name:'Invoice Template',children:[]},
@@ -252,7 +197,7 @@ export default {
                         {id:'PMSACR_ESM_MTT',name:'Meter Templete Report',children:[]}
                     ]}
                 ]},
-                {id:'PMSRPT',name:'Reports',children:[
+                {id:'PMSRPT',name:'Reports',icon:'tabler:report',children:[
                     {id:'PMSRPT_ARB',name:'AR Billing',children:[]},
                     {id:'PMSRPT_ODI',name:'Overdue Interest',children:[]},
                     {id:'PMSRPT_REC',name:'Receipt',children:[]},
@@ -269,7 +214,7 @@ export default {
                     {id:'PMSRPT_PND',name:'PN Deposit',children:[]},
                     {id:'PMSRPT_PNR',name:'PN Report',children:[]}                
                 ]},
-                {id:'PMSADM',name:'Administration',children:[
+                {id:'PMSADM',name:'Administration',icon:'tabler:manual-gearbox',children:[
                     {id:'PMSADM_USR',name:'User Maintenance',children:[]},
                     {id:'PMSADM_RLE',name:'Role Maintenance',children:[]},
                     {id:'PMSADM_RER',name:'Regular Request',children:[]},
@@ -306,9 +251,8 @@ export default {
             ]
         }
     },
-    methods: {        
+    methods: {
         toggleSiderBar() {
-
             console.log('invoke toogle sidebar');
             this.collapsed = !this.collapsed;
         }
@@ -319,7 +263,10 @@ export default {
 <style lang="scss" scoped>
 #wrapper {
     display: flex;
-
+    ::-webkit-scrollbar {
+        width: 0px;
+        height: 10px;
+    }
     aside {
         box-sizing: border-box;
         width: var(--sidebar-width);
@@ -328,7 +275,10 @@ export default {
         transition: all 0.3s;
         background: #fff;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y:auto;
+       
+        scrollbar-arrow-color: aqua;
+        /*overflow-y: scroll;*/
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 
         &.collpased {
