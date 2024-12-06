@@ -2,7 +2,7 @@
 <div id="wrapper">
     <aside class="sidebar" :class="{ collpased: collapsed }">
         <nav>
-            <h3 class="logo">Vue Admin Spa</h3>
+            <h3 class="logo">{{ collapsed?'VAS': 'Vue Admin Spa'}} </h3>
             <!--
             <ul class="menu">
                 <li class="menu-item">
@@ -63,7 +63,7 @@ export default {
             menu_tree_property_one:[ //{id:2,name:'',children:[]}
                 {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',children:[]},
                 {id:'PMSENQ',name:'Enquiry',icon:'tabler:pencil-question',children:[
-                    {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[]},
+                    {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[],route:'/cen'},
                     {id:'PMSENQ_ABE',name:'Account Balance Enquiry',children:[]},
                     {id:'PMSENQ_LSE',name:'Lease Enquiry',children:[]},
                     {id:'PMSENQ_EXS',name:'Executive Summary',children:[]}

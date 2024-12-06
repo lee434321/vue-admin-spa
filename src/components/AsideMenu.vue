@@ -1,5 +1,5 @@
 <template>
-<ul class="w-menu" :alt="pid">    
+<ul class="w-menu" >    
     <li v-for="item in items" :key="item.id" :class="item.children.length>0?'w-sub-menu':''">
         <div class="w-sub-menu-holder" v-if="item.children.length>0" @click.stop="slide($event,item)">
             <i class='icon'>
@@ -11,14 +11,22 @@
                 </Icon>
             </i>
         </div>
-        <div class="w-menu-item" v-else>
-            <i class='icon'><Icon :icon="item.icon"></Icon></i>
-            <span>{{ item.name }}</span>
+        <div class="w-menu-item" v-else>            
+            <RouterLink :to="item.route" v-if="item.route">
+                <i class='icon'><Icon :icon="item.icon"></Icon></i>
+                <span>{{ item.name }}</span>
+            </RouterLink> 
+            <div v-else> 
+                <i class='icon'><Icon :icon="item.icon"></Icon></i>
+                <span >
+                    {{ item.name }}
+                </span>
+            </div>            
         </div>
         <AsideMenu v-if="item.children.length > 0" 
-            :items = "item.children"       
-            :style = "ticked.id&&openedId==item.id&&autoHeight?{height:'auto'}:subcss(item)"
-            :alt="ticked.id + autoHeight"
+            :items = "item.children"      
+            :pid="item.id" 
+            :style = "ticked.id && openedId==item.id && autoHeight?{height:'auto'}:subcss(item)"
             @enlarge-height = "test">
         </AsideMenu>
     </li>
@@ -26,6 +34,10 @@
 </template>
 
 <script>
+/*
+待处理：
+1.slide menu mutex process
+*/
 export default {
     name: 'AsideMenu',
     data: () => {
@@ -105,6 +117,11 @@ export default {
 </script>
 
 <style scoped>
+
+a{
+    text-decoration: none;
+}
+
 /* w-menu reboot 
 注意：只有第一级菜单的li元素应用了 padding：0 0px,
 之后所有子菜单的li元素都为padding：0
@@ -177,6 +194,11 @@ export default {
 
         .w-menu-item {
             line-height: 50px !important;
+            &:hover{
+                cursor: pointer;
+                background-color: #bea3d4;
+            }
+
         }
     }
 

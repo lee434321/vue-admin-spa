@@ -37,4 +37,13 @@ const router = createRouter({
     routes
 });
 
+
+router.beforeEach((to, from) => {
+    const routeExists= router.getRoutes().some(route=>route.path===to.path);
+    console.log(routeExists);
+    console.log('from:',from,'to',to)
+    // ...
+    // 返回 false 以取消导航
+    // return false
+  });
 export default router
