@@ -1,6 +1,6 @@
 <template>
 <ul class="w-menu" >    
-    <li v-for="item in items" :key="item.id" :class="item.children.length>0?'w-sub-menu':''">
+    <li v-for="item in items" :key="item.id" :class="item.children.length>0?'w-sub-menu':'w-menu-item'">
         <div class="w-sub-menu-holder" v-if="item.children.length>0" @click.stop="slide($event,item)">
             <i class='icon'>
                 <Icon :icon="item.icon"></Icon>
@@ -11,7 +11,7 @@
                 </Icon>
             </i>
         </div>
-        <div class="w-menu-item" v-else>            
+        <div v-else>            
             <RouterLink :to="item.route" v-if="item.route">
                 <i class='icon'><Icon :icon="item.icon"></Icon></i>
                 <span>{{ item.name }}</span>
@@ -23,7 +23,8 @@
                 </span>
             </div>            
         </div>
-        <AsideMenu v-if="item.children.length > 0" 
+        <AsideMenu 
+            v-if="item.children.length > 0 "
             :items = "item.children"      
             :pid="item.id" 
             :style = "ticked.id && openedId==item.id && autoHeight?{height:'auto'}:subcss(item)"
@@ -40,7 +41,7 @@
 */
 export default {
     name: 'AsideMenu',
-    data: () => {
+    data: () => {        
         return { 
             ticked: {},
             openedId:'',
@@ -65,7 +66,7 @@ export default {
                 this.autoHeight = true;
             else 
                 this.autoHeight=false;
-            console.log('emit',pid,this.ticked.id,this.ticked.name,this.autoHeight);
+            console.log('emit',pid,this.ticked.id+this.ticked.name,this.autoHeight);
         },
         calcHeight(item) {
             var h = 0;
@@ -78,12 +79,11 @@ export default {
             }
             return h;
         },
-        subcss(item) {
-            //if (!this.ticked.id) return;
-            console.log('subcss',item.name,this.ticked.id);
+        subcss(item) {            
+            console.log('subcss',item.name,item.id,this.ticked.id);
             var h = 0;
             if (item.id == this.ticked.id) {
-                h=this.calcHeight(item);                                                                
+                h = this.calcHeight(item);                                                                
                 //this.$emit('enlarge-height',this.pid)
                 return {
                     height: h + 'px'
@@ -103,14 +103,15 @@ export default {
             }
             this.$emit('enlarge-height',this.pid);
 
-            console.log(this.ticked.name)
-            var parent=this.$parent;
+            console.log('slide tick',this.ticked.name)
+            var parent = this.$parent;
+            // 向上遍历            
             while (parent) {
                 if (parent.ticked) {
                     console.log('parent:',parent.ticked.name);    
                 }                
                 parent=parent.$parent;
-            }           
+            }            
         }
     }
 }
@@ -122,9 +123,8 @@ a{
     text-decoration: none;
 }
 
-/* w-menu reboot 
-注意：只有第一级菜单的li元素应用了 padding：0 0px,
-之后所有子菜单的li元素都为padding：0
+/* 
+w-menu reboot 
 */
 .w-menu {
     font-size: 12px !important;
@@ -134,6 +134,7 @@ a{
     position: relative;
     margin: 0;
     padding-left: 0;
+    box-sizing: border-box;
 
     .icon {
         line-height: 1;
@@ -151,6 +152,8 @@ a{
         z-index: 100;
         cursor: pointer;
         font-weight: 600;
+        padding: 0 20px;
+        box-sizing: border-box;  
         *,
         i {
             z-index: -100;
@@ -186,30 +189,27 @@ a{
         div {
             width: 100%;
             overflow: hidden;
-
-            &:hover {
-                background-color: #bea3d4;
-            }
         }
 
         .w-menu-item {
-            line-height: 50px !important;
-            &:hover{
-                cursor: pointer;
-                background-color: #bea3d4;
-            }
-
-        }
+            line-height: 50px !important;          
+        }       
     }
-
-    .w-sub-menu li {
-        padding: 0;
-    }
-
+    .w-sub-menu{
+        padding:0;
+    }       
     ul {
         height: 0;
         transition: height 0.27s;
         overflow: hidden;
     }
+
+    /*菜单hover效果*/
+    li.w-menu-item,.w-sub-menu-holder{
+        &:hover {
+            background-color: #bea3d4;
+        }
+    }
+
 }
 </style>

@@ -29,7 +29,21 @@ const routes = [{
         path: '/prod',
         name: 'product',
         component: Product
+    }, {
+        path: '/cen',
+        name: 'Customer Enquiry',
+        component: () => {
+            return { template: '<div>Customer Enquiry</div>' }
+        }
     }]
+
+}, {
+    path: '/404',
+    name: '404',
+    meta: {
+        title: "404",
+    },
+    component: () => import('@/views/404')
 }]
 
 const router = createRouter({
@@ -39,11 +53,14 @@ const router = createRouter({
 
 
 router.beforeEach((to, from) => {
-    const routeExists= router.getRoutes().some(route=>route.path===to.path);
+    const routeExists = router.getRoutes().some(route => route.path === to.path);
     console.log(routeExists);
-    console.log('from:',from,'to',to)
+    if (!routeExists) {
+        router.push('404');
+    }
+    console.log('from:', from, 'to', to)
     // ...
     // 返回 false 以取消导航
     // return false
-  });
+});
 export default router
