@@ -3,7 +3,8 @@
     <aside class="sidebar" :class="{ collpased: collapsed }">
         <nav>
             <h3 class="logo">{{ collapsed?'VAS': 'Vue Admin Spa'}} </h3>
-            <AsideMenu :items="menu_tree_property_one"></AsideMenu>
+            <AsideMenu :items="menu_tree_property_one" :rid="'-1'"></AsideMenu>
+             <!-- <AsideMenu2 :items="menu_tree_property_one" :rid="-1"></AsideMenu2> -->
         </nav>
     </aside>
     <main class="content-wrapper">        
@@ -14,7 +15,7 @@
             </svg>
             <a class="animated fadeIn">Hi,[lizw阿玮]</a>
         </header>
-        <router-view class="dynamic-view"></router-view>
+        <section><router-view class="dynamic-view"></router-view></section> 
         <footer>footer area {{ msg }}</footer>
     </main>
 </div>
@@ -22,17 +23,19 @@
 
 <script>
 import AsideMenu from '@/components/AsideMenu.vue'
+import AsideMenu2 from '@/components/AsideMenu2.vue'
 export default {
     name: "layout",
     components: {        
-        AsideMenu
+        AsideMenu,
+        AsideMenu2
     },
     data: function () {
         return {
             msg: 'test',
             collapsed: false,
             menu_tree_property_one:[ //{id:2,name:'',children:[]}
-                {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',children:[]},
+                {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',route:'/dashboard',children:[]},
                 {id:'PMSENQ',name:'Enquiry',icon:'tabler:pencil-question',children:[
                     {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[],route:'/cen'},
                     {id:'PMSENQ_ABE',name:'Account Balance Enquiry',children:[],route:'/abe'},
@@ -52,8 +55,19 @@ export default {
                         {id:'PMSPPT_PPD_FLR',name:'Floor',children:[]},
                         {id:'PMSPPT_PPD_UNT',name:'Unit',children:[]},
                     ]},
-                    {id:'PMSPPT_SPM',name:'Space Management',children:[]},
-                    {id:'PMSPPT_LSM',name:'Lease Management',children:[]},
+                    {id:'PMSPPT_SPM',name:'Space Management',children:[
+                        {id:'PMSPPT_SPM_VHT',name:'View History',children:[]},
+                        {id:'PMSPPT_SPM_SPL',name:'Unit Split',children:[]},
+                        {id:'PMSPPT_SPM_CMB',name:'Unit Combine',children:[]},
+                        {id:'PMSPPT_SPM_STS',name:'Unit Status',children:[]}
+                    ]},
+                    {id:'PMSPPT_LSM',name:'Lease Management',children:[
+                        {id:'PMSPPT_LSM_LSD',name:'Lease Definition',children:[]},
+                        {id:'PMSPPT_LSM_ARS',name:'Approval Request Submission',children:[]},
+                        {id:'PMSPPT_LSM_MUC',name:'Max Update Charge',children:[]},
+                        {id:'PMSPPT_LSM_LAR',name:'Mass Approval',children:[]},
+                        {id:'PMSPPT_LSM_LSV',name:'View Lease',children:[]}                                                
+                    ]},
                     {id:'PMSPPT_TOR',name:'Turnover Rent',children:[
                         {id:'PMSPPT_TOR_TFD',name:'TR Formula Definition',children:[]},
                         {id:'PMSPPT_TOR_MMR',name:'MGT Rental',children:[]},
@@ -271,13 +285,19 @@ export default {
     }
 
     main.content-wrapper {
+        max-width: calc(100% - 260px);
         flex-grow: 1;
         position: relative;
         background: #f8f8f8;
-        min-height: 100vh;
+        height: 100vh;
         transition: all 0.3s;
         .dynamic-view {
             padding: 15px 15px 60px 15px;
+           
+        }
+        section {
+            height: calc(100vh - 60px - 48px);
+            overflow: scroll;
         }
     }
 

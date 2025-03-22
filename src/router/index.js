@@ -18,6 +18,11 @@ const routes = [{
     name: 'home',
     component: () => import('@/layout'),
     children: [{
+        path:'/dashboard',
+        name:'dashboard',
+        component:()=>import('@/views/dashboard')
+    },
+    {
         path: '/emp',
         name: 'employee',
         component: Employee
