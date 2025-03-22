@@ -2,37 +2,9 @@
 <div id="wrapper">
     <aside class="sidebar" :class="{ collpased: collapsed }">
         <nav>
-            <h3 class="logo">Vue Admin Spa</h3>
-            <!--
-            <ul class="menu">
-                <li class="menu-item">
-                    <i class="icon">                        
-                        <Icon icon="tabler:layout-dashboard-filled" ></Icon>
-                    </i>
-                    <span class="menu-item-title">
-                        <RouterLink to="/emp">Employee</RouterLink>
-                    </span>
-                </li>
-                <li class="menu-item">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="m13.666 1.429l6.75 3.98q.1.06.18.133l.009.008l.106.075a3.22 3.22 0 0 1 1.284 2.39l.005.203v7.284c0 1.175-.643 2.256-1.623 2.793l-6.804 4.302c-.98.538-2.166.538-3.2-.032l-6.695-4.237A3.23 3.23 0 0 1 2 15.502V8.217a3.21 3.21 0 0 1 1.65-2.808l6.775-3.995a3.34 3.34 0 0 1 3.24.015m-.64 5.343a2.03 2.03 0 0 0-2-.014L8.002 8.562A1.99 1.99 0 0 0 7 10.298v3.278a2 2 0 0 0 1.03 1.75l2.946 1.89c.657.367 1.39.367 1.994.033l3.054-1.955c.582-.322.976-.992.976-1.719v-3.277l-.005-.164a2 2 0 0 0-.725-1.391l-.092-.07l-.056-.047a1 1 0 0 0-.096-.064z" />
-                        </svg>
-                    </i>
-                    <RouterLink to="/dept">Department</RouterLink>
-                </li>
-                <li class="menu-item">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9M9 15.075l6-6m-6 .03v.015m6 6v.015" />
-                        </svg>
-                    </i>
-                    <RouterLink to="/prod">Product</RouterLink>
-                </li>
-            </ul>
-            -->
-
-            <AsideMenu :items="menu_tree_property_one"></AsideMenu>
+            <h3 class="logo">{{ collapsed?'VAS': 'Vue Admin Spa'}} </h3>
+            <AsideMenu :items="menu_tree_property_one" :rid="'-1'"></AsideMenu>
+             <!-- <AsideMenu2 :items="menu_tree_property_one" :rid="-1"></AsideMenu2> -->
         </nav>
     </aside>
     <main class="content-wrapper">        
@@ -43,7 +15,7 @@
             </svg>
             <a class="animated fadeIn">Hi,[lizw阿玮]</a>
         </header>
-        <router-view class="dynamic-view"></router-view>
+        <section><router-view class="dynamic-view"></router-view></section> 
         <footer>footer area {{ msg }}</footer>
     </main>
 </div>
@@ -51,20 +23,22 @@
 
 <script>
 import AsideMenu from '@/components/AsideMenu.vue'
+import AsideMenu2 from '@/components/AsideMenu2.vue'
 export default {
     name: "layout",
     components: {        
-        AsideMenu
+        AsideMenu,
+        AsideMenu2
     },
     data: function () {
         return {
             msg: 'test',
             collapsed: false,
             menu_tree_property_one:[ //{id:2,name:'',children:[]}
-                {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',children:[]},
+                {id:'PMSHOM',name:'Home',icon:'tabler:home-filled',route:'/dashboard',children:[]},
                 {id:'PMSENQ',name:'Enquiry',icon:'tabler:pencil-question',children:[
-                    {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[]},
-                    {id:'PMSENQ_ABE',name:'Account Balance Enquiry',children:[]},
+                    {id:'PMSENQ_CEN',name:'Customer Enquiry',children:[],route:'/cen'},
+                    {id:'PMSENQ_ABE',name:'Account Balance Enquiry',children:[],route:'/abe'},
                     {id:'PMSENQ_LSE',name:'Lease Enquiry',children:[]},
                     {id:'PMSENQ_EXS',name:'Executive Summary',children:[]}
                 ]},
@@ -81,8 +55,19 @@ export default {
                         {id:'PMSPPT_PPD_FLR',name:'Floor',children:[]},
                         {id:'PMSPPT_PPD_UNT',name:'Unit',children:[]},
                     ]},
-                    {id:'PMSPPT_SPM',name:'Space Management',children:[]},
-                    {id:'PMSPPT_LSM',name:'Lease Management',children:[]},
+                    {id:'PMSPPT_SPM',name:'Space Management',children:[
+                        {id:'PMSPPT_SPM_VHT',name:'View History',children:[]},
+                        {id:'PMSPPT_SPM_SPL',name:'Unit Split',children:[]},
+                        {id:'PMSPPT_SPM_CMB',name:'Unit Combine',children:[]},
+                        {id:'PMSPPT_SPM_STS',name:'Unit Status',children:[]}
+                    ]},
+                    {id:'PMSPPT_LSM',name:'Lease Management',children:[
+                        {id:'PMSPPT_LSM_LSD',name:'Lease Definition',children:[]},
+                        {id:'PMSPPT_LSM_ARS',name:'Approval Request Submission',children:[]},
+                        {id:'PMSPPT_LSM_MUC',name:'Max Update Charge',children:[]},
+                        {id:'PMSPPT_LSM_LAR',name:'Mass Approval',children:[]},
+                        {id:'PMSPPT_LSM_LSV',name:'View Lease',children:[]}                                                
+                    ]},
                     {id:'PMSPPT_TOR',name:'Turnover Rent',children:[
                         {id:'PMSPPT_TOR_TFD',name:'TR Formula Definition',children:[]},
                         {id:'PMSPPT_TOR_MMR',name:'MGT Rental',children:[]},
@@ -261,15 +246,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#wrapper {
+#wrapper {    
     display: flex;
     ::-webkit-scrollbar {
         width: 0px;
-        height: 10px;
+        height: 0px;
     }
-    aside {
+    aside {        
         box-sizing: border-box;
-        width: var(--sidebar-width);
+        width: var(--sidebar-width);  
         height: 100vh;
         z-index: 5;
         transition: all 0.3s;
@@ -300,14 +285,19 @@ export default {
     }
 
     main.content-wrapper {
+        max-width: calc(100% - 260px);
+        flex-grow: 1;
         position: relative;
         background: #f8f8f8;
-        min-height: 100vh;
+        height: 100vh;
         transition: all 0.3s;
-        width: 100%;
-
         .dynamic-view {
             padding: 15px 15px 60px 15px;
+           
+        }
+        section {
+            height: calc(100vh - 60px - 48px);
+            overflow: scroll;
         }
     }
 

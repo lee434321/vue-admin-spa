@@ -5,15 +5,14 @@ import router from './router'
 // 引入谷歌字体文件
 import "@/assets/css/fonts.css";
 
-import TablerIcons from './components/TablerIcons.vue';
-
-//创建应用
+// 创建应用
 const app = createApp(App)
 app.use(router);
+
+// 挂载应用
 app.mount('#app')
 
-app.component('TablerIcons',TablerIcons)
-
+// iconify图标组件
 import {Icon} from '@iconify/vue';
 app.component('Icon',Icon)
 

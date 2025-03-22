@@ -3,12 +3,9 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
   components: {
-   // HelloWorld
   }
 }
 </script>
@@ -27,7 +24,7 @@ body {
 }
 
 :root {
-  --sidebar-width: 300px;
+  --sidebar-width: 220px;
   --sidebar-collapsed-width: 64px;
 }
 </style>
