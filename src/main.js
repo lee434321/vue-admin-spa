@@ -5,14 +5,14 @@ import router from './router'
 // 引入谷歌字体文件
 import "@/assets/css/fonts.css";
 
-// 创建应用
+// 创建应用(根组件)
 const app = createApp(App)
+// 使用路由
 app.use(router);
-
 // 挂载应用
 app.mount('#app')
 
-// iconify图标组件
+// 加入iconify图标组件
 import {Icon} from '@iconify/vue';
 app.component('Icon',Icon)
 

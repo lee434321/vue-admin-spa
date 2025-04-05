@@ -3,7 +3,7 @@
 <ul class="w-menu"  :alt="rid" >    
     <li v-for="item in items"
         :key="item.id" 
-        :class="item.children.length>0 ? 'w-sub-menu':'w-menu-item'">
+        :class="item.children && item.children.length>0 ? 'w-sub-menu':'w-menu-item'">
         <div class="w-sub-menu-holder" v-if="item.children && item.children.length>0" @click.stop="slide($event,item)">
             <i class='icon'>
                 <Icon :icon="item.icon"></Icon>
@@ -27,10 +27,7 @@
         </div>
         <AsideMenu 
             v-if="item.children && item.children.length > 0 "
-            :items = "item.children"      
-            :pid="item.id"
-            :id="item.id"
-            :rid="item.id"
+            :items = "item.children"            
             :name="item.name"
             :style = "ticked.id && openedId == item.id && autoHeight? { height:'auto'}: subcss(item) "
             @enlarge-height = "test">
@@ -60,9 +57,9 @@ export default {
     props: {
         msg: String,
         items: Array,
-        pid:String,
-        id:String,
-        rid:String
+        pid:String||Number,
+        id:String||Number,
+        rid:String||Number
     },
     methods: {
         test(pid) {
@@ -77,7 +74,7 @@ export default {
             var h = 0;
             for (let i = 0; i < item.children.length; i++) {
                 var sub = item.children[i];
-                if (sub.children.length > 0) {
+                if (sub.children && sub.children.length > 0) {
                     h += 56;
                 } else
                     h += 50;

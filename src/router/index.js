@@ -13,34 +13,44 @@ const Department = {
 const Product = {
     template: '<div>Product</div>'
 }
+const Portal = {
+    template: '<div>Portal</div>'
+}
+//根路由
 const routes = [{
     path: '/',
     name: 'home',
     component: () => import('@/layout'),
-    children: [{
-        path:'/dashboard',
-        name:'dashboard',
-        component:()=>import('@/views/dashboard')
-    },
-    {
-        path: '/emp',
-        name: 'employee',
-        component: Employee
-    }, {
-        path: '/dept',
-        name: 'department',
-        component: Department
-    }, {
-        path: '/prod',
-        name: 'product',
-        component: Product
-    }, {
-        path: '/cen',
-        name: 'Customer Enquiry',
-        component: () => {
-            return { template: '<div>Customer Enquiry</div>' }
-        }
-    }]
+    children: [
+        {
+            path: '/portal',
+            name: 'portal',
+            component: Portal            
+        },
+        {
+            path: '/dashboard',
+            name: 'dashboard',
+            component: () => import('@/views/dashboard')
+        },
+        {
+            path: '/emp',
+            name: 'employee',
+            component: Employee
+        }, {
+            path: '/dept',
+            name: 'department',
+            component: Department
+        }, {
+            path: '/prod',
+            name: 'product',
+            component: Product
+        }, {
+            path: '/cen',
+            name: 'Customer Enquiry',
+            component: () => {
+                return { template: '<div>Customer Enquiry</div>' }
+            }
+        }]
 
 }, {
     path: '/404',
@@ -55,7 +65,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 });
-
 
 router.beforeEach((to, from) => {
     const routeExists = router.getRoutes().some(route => route.path === to.path);
